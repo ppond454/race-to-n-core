@@ -1,9 +1,15 @@
 package core
 
-type Match struct {
-	n uint8
+type Player struct {
+	Id          string
+	moveHistory []uint
 }
 
-func (ctx *Match) CheckWin() uint8 {
-	return ctx.n
+type Match struct {
+	n       uint8
+	players []Player
+	count   uint
+	current uint8
+	turn    Player
+	winner  Player
 }

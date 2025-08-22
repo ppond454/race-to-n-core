@@ -1,11 +1,18 @@
 package core
 
 type ICore interface {
-	CheckWin() uint8
-}
+	GetWinner() Player
+	MakeMove(value []uint8, player Player)
+	IsLegal() bool
+	GetWhoTurn() Player
+	GetAllPlayer() []Player
+	GetPlayer(id string) Player
+	GetTurnCount() uint
+	CanPlay(player Player) bool
+	GetChoice() []uint8
 
-func New(n uint8) ICore {
-	return &Match{
-		n,
-	}
+	SetN(n uint8) ICore
+	AddPlayer(Player)
+	CanStart() bool
+	Start()
 }
