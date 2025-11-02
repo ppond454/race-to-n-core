@@ -1,19 +1,21 @@
 package core
 
+import "github.com/ppond454/race-to-n-core/player"
+
 type ICore interface {
 	// GetWinner() Player
 	// IsLegal() bool
 	// GetWhoTurn() Player
-	GetAllPlayer() []Player
+	GetAllPlayer() []player.Player
 	// GetPlayer(id string) Player
 	// GetTurnCount() uint
 	// CanPlay(player Player) bool
-	// GetChoice() []uint8
+	GetChoice() ([]uint8, error)
 	GetN() uint8
 	GetState() State
 
 	SetN(n uint8) error
-	AddPlayer(Player) error
+	AddPlayer(player.Player) error
 	CanStart() (bool, error)
 	Start() error
 
@@ -22,16 +24,9 @@ type ICore interface {
 	// MakeMove(value []uint8, player Player)
 }
 
-func New() *Match {
+func New() ICore {
 	return &Match{
-		players: []Player{},
+		players: []player.Player{},
 		state:   WAITING,
-	}
-}
-
-func NewPlayer(id string) *Player {
-	return &Player{
-		Id:          id,
-		moveHistory: []uint{},
 	}
 }

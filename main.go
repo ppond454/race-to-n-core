@@ -12,10 +12,14 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	can, err := foo.CanStart()
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	fmt.Println("test", can)
+	// can, err := foo.CanStart()
+
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+
+	choice, err := foo.GetChoice()
+	fmt.Println("test", choice, err)
+
 }
